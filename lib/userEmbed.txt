@@ -1,0 +1,11 @@
+<ul>
+     <% userData.forEach((user) => { %>
+                <li><%=user.firstname%> <%=user.lastname%></li>
+                <ul>
+                  <li><%=user.email%></li>
+                </ul>
+        <%});%>
+</ul>
+
+// start mongodb in shell
+/Users/alvinalaphat/Downloads/mongodb-osx-x86_64-4.0.5/bin/mongo "mongodb+srv://cluster0-1v2q4.mongodb.net/test" --username alvinalaphat

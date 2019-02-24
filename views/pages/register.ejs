@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="shortcut icon" href="images/iNIcon3.ico" />
+    
+    <style>
+    </style>
+    <title>Register - iNetwork</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    .logo{
+      width: 300px;
+      height: 150px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .column {
+  float: left;
+  padding-right: 20px;
+}
+    </style>
+  </head>
+  <body id="body">
+<!--
+    you can substitute the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container">
+        <div class="card card-container">
+          <img src="images/officiallogo.png" class="logo">
+            <form class="form-signin" method="POST" action="/api/v1/registeruser">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="username" class="form-control" placeholder="Email" name="email" required="">
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required="">
+                <input type="password" id="confirm" class="form-control" placeholder="Confirm Password" name="confirm" required="">
+                <input type="text" id="firstname" class="form-control" placeholder="First Name" name="firstname" required="">
+                <input type="text" id="lastname" class="form-control" placeholder="Last Name" name="lastname" required="">
+                <!-- <select id="city">
+                  <option value="none">Select Your City</option>
+                  <option value="kirkwood">Kirkwood</option>
+                  <option value="webster">Webster</option>
+                  <option value="st. charles">St. Charles</option>
+                  <option value="o'fallon">O'Fallon</option>
+                  <option value="creve coeur">Creve Coeur</option>
+                  <option value="belleville">Belleville</option>
+                </select><br><br> -->
+                <h4>What do you have to offer?</h4>
+                <strong>Mentoring</strong><br>
+                <select id="subject">
+                  <option value="none">Select A Subject</option>
+                  <option value="math">Math</option>
+                  <option value="science">Science</option>
+                  <option value="english">English</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="latin">Latin</option>
+                  <option value="history">History</option>
+                  <option value="music">Music</option>
+                  <option value="greek">Greek</option>
+                  <option value="computer science">Computer Science</option>
+                </select><br><br>
+                <strong>Coaching</strong><br>
+                <select id="sport">
+                  <option id="none" value="none">Select Your Sport</option>
+                  <option id="soccer" value="soccer">Soccer</option>
+                  <option id="football" value="football">Football</option>
+                  <option id="basketball" value="basketball">Basketball</option>
+                  <option id="rugby" value="rugby">Rugby</option>
+                  <option id="track" value="track">Track</option>
+                  <option id="raquetball" value="raquetball">Raquetball</option>
+                  <option id="pingpong" value="ping pong">Ping Pong</option>
+                  <option id="baseball" value="baseball">Baseball</option>
+                  <option id="golf" value="golf">Golf</option>
+                  <option id="waterpolo" value="water polo">Water Polo</option>
+                  <option id="lacrosse" value="lacrosse">Lacrosse</option>
+                  <option id="volleyball" value="volleyball">Volleyball</option>
+                  <option id="hockey" value="hockey">Hockey</option>
+                  <option id="crosscountry" value="cross country">Cross Country</option>
+                  <option id="wrestling" value="wrestling">Wrestling</option>
+                </select><br><br>
+                <strong>Certifications</strong><br>
+                <div class="container">
+                  <div class="column">
+                  <input id="drillpress" type="checkbox" name="drillpress" value="drillpress"> Drill Press<br>
+                  <input id="panelsaw" type="checkbox" name="circlesaw" value="circlesaw"> Panel Saw<br>
+                  <input id="chopsaw" type="checkbox" name="bevel" value="bevel"> Chop Saw<br>
+                  <input id="tablesaw" type="checkbox" name="screwgun" value="screwgun"> Table Saw<br>
+                </div>
+                <div class="column">
+                  <input id="lasercutter" type="checkbox" name="screwgun" value="screwgun"> Laser Cutter<br>
+                  <input id="electrichandtools" type="checkbox" name="screwgun" value="screwgun"> Electric Hand Tools<br>
+                  <input id="cncrouter" type="checkbox" name="screwgun" value="screwgun"> CNC Router<br>
+                  <input id="3dprinter" type="checkbox" name="screwgun" value="screwgun"> 3D Printer<br>
+                </div>
+                </div>
+                <div type="submit" class="btn btn-primary btn-block" onclick="myFunction();return false">Register</div>
+            </form>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    <script>
+      function myFunction()
+      {
+          if(document.getElementsByName("confirm")[0].value != document.getElementsByName("password")[0].value){
+            alert("Passwords do not match");
+            console.log(document.getElementsByName("password")[0].value);
+            console.log(document.getElementsByName("confirm")[0].value);
+          }
+          else{
+          var email = document.getElementsByName("email")[0].value;
+          var password = document.getElementsByName("password")[0].value;
+          var firstname = document.getElementsByName("firstname")[0].value;
+          var lastname = document.getElementsByName("lastname")[0].value;
+          var skills = [];
+          var sport = document.getElementById('sport');
+          var subject = document.getElementById('subject');
+
+          if(firstname == ""){
+            alert("first name is required");
+          }
+
+          if(document.getElementById('panelsaw').checked){
+            skills.push('panel saw');
+          }
+          if(document.getElementById('tablesaw').checked){
+            skills.push('table saw');
+          }
+          if(document.getElementById('chopsaw').checked){
+            skills.push('chop saw');
+          }
+          if(document.getElementById('drillpress').checked){
+            skills.push('drill press');
+          }
+          if(document.getElementById('lasercutter').checked){
+            skills.push('laser cutter');
+          }
+          if(document.getElementById('electrichandtools').checked){
+            skills.push('electric hand tools');
+          }
+          if(document.getElementById('cncrouter').checked){
+            skills.push('cnc router');
+          }
+          if(document.getElementById('3dprinter').checked){
+            skills.push('3D printer');
+          }
+          if(sport.value != 'none'){
+            skills.push(sport.value);
+          }
+          if(subject.value != 'none'){
+            skills.push(subject.value);
+          }
+          window.location = "/home";
+
+
+var donorInfo = {"email":email,"password":password,"firstname":firstname, "lastname":lastname,
+"skills":JSON.stringify(skills)};
+  console.log(donorInfo);
+
+jQuery.post(
+  "http://127.0.0.1:3005/register", donorInfo, function(data){
+      console.log(data);
+  }
+)};
+}
+    </script>
+  </body>
+</html>

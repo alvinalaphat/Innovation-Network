@@ -1,0 +1,32 @@
+{
+  "name": "wwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "*",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-generator": "^4.16.0",
+    "express-messages": "*",
+    "express-session": "^1.15.6",
+    "express-validator": "*",
+    "mongo": "^0.1.0",
+    "mongodb": "*",
+    "mongoose": "*",
+    "multer": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.2.0",
+    "socketio": "^1.0.0"
+  }
+}

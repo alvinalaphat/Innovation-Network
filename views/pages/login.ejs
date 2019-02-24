@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="shortcut icon" href="images/iNIcon3.ico" />
+    
+    <title>Login - iNetwork</title>
+    <style>
+    .logo{
+      width: 300px;
+      height: 150px;
+      padding-right: 20px;
+      padding-bottom: 10px;
+    }
+    </style>
+  </head>
+  <body>
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container has-text-centered">
+
+        <div class="card card-container has-text-centered">
+          <img src="images/officiallogo.png" class="logo">
+          <section id="login">
+            <!-- <p id="profile-name" class="profile-name-card">Innovation Network Login</p> -->
+            <!--<h4 class="pageIdentifier">Staff Login Page</h4>-->
+            <form class="form-signin" method="POST">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputUserID" class="form-control" placeholder="Email" name="email" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required><br>
+                <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="myFunction();return false">Sign in</button>
+            </form><!-- /form --><!--
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>-->
+          </section><br>
+            <a href="/register">Not a member? Register Now!</a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    <script>
+    function myFunction(){
+        var email = document.getElementsByName("email")[0].value;
+        var password = document.getElementsByName("password")[0].value;
+        var user = {"email":email,"password":password};
+jQuery.post(
+"http://127.0.0.1:3005/login", user, function(data){
+  if(data.success){
+    //route to dashboard
+    window.location = 'http://127.0.0.1:3005/home'
+  }else{
+    //alert
+    alert("Password or email is wrong")
+  }
+    console.log(data);
+}
+)
+};
+    </script>
+  </body>
+</html>
