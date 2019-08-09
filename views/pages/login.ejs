@@ -48,10 +48,10 @@
         var password = document.getElementsByName("password")[0].value;
         var user = {"email":email,"password":password};
 jQuery.post(
-"http://127.0.0.1:3005/login", user, function(data){
+"/login", user, function(data){
   if(data.success){
     //route to dashboard
-    window.location = 'http://127.0.0.1:3005/home'
+    window.location = '/home'
   }else{
     //alert
     alert("Password or email is wrong")

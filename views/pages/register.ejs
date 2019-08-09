@@ -161,7 +161,7 @@ var donorInfo = {"email":email,"password":password,"firstname":firstname, "lastn
   console.log(donorInfo);
 
 jQuery.post(
-  "http://127.0.0.1:3005/register", donorInfo, function(data){
+  "/register", donorInfo, function(data){
       console.log(data);
   }
 )};
