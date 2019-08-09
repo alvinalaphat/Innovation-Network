@@ -9,7 +9,7 @@ var passport = require('passport'), LocalStrategy = require('passport-local').St
 var MongoClient = require('mongodb').MongoClient;
 var server = require('http').createServer(app);
 var db = mongoose.connection;
-const port = 3005;
+const port = process.env.PORT || 3005;
 const flash = require('connect-flash');
 const { ensureAuthenticated } = require('./views/config/auth');
 var User = require('./lib/User.js');
@@ -270,7 +270,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // server listen
-server.listen(port, '127.0.0.1', function() {
+app.listen(port, () => {
   console.log('Listening on ' + port)
 });
 
