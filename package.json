@@ -1,10 +1,10 @@
 {
   "name": "wwt",
   "version": "1.0.0",
-  "description": "",
+  "description": "App that enables students and teachers to find people with the skills they are looking for to communicate and take advantage of opportunities efficiently.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,7 @@
     "connect-flash": "*",
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-generator": "^4.16.0",
     "express-messages": "*",
     "express-session": "^1.15.6",
@@ -28,5 +28,17 @@
     "passport-local": "^1.0.0",
     "socket.io": "^2.2.0",
     "socketio": "^1.0.0"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvinalaphat/Innovation-Network.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alvinalaphat/Innovation-Network/issues"
+  },
+  "homepage": "https://github.com/alvinalaphat/Innovation-Network#readme",
+  "keywords": []
 }
